@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:focusable_control_builder/focusable_control_builder.dart';
 import 'package:gap/gap.dart';
+import 'package:provider/provider.dart';
 
+import '../common/shader_effect.dart';
+import '../common/ticking_builder.dart';
 import '../common/ui_scaler.dart';
 import '../utils/assets.dart';
 import '../utils/styles.dart';
@@ -13,12 +16,14 @@ class TitleScreenUi extends StatelessWidget {
   final int difficulty;
   final void Function(int difficulty) onDifficultyPressed;
   final void Function(int? difficulty) onDifficultyFocused;
+  final VoidCallback onStartPressed;
 
   const TitleScreenUi({
     super.key,
     required this.difficulty,
     required this.onDifficultyPressed,
     required this.onDifficultyFocused,
+    required this.onStartPressed,
   });
 
   @override
@@ -54,7 +59,7 @@ class TitleScreenUi extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 20, right: 40),
                 child: _StartButton(
-                  onPressed: () {},
+                  onPressed: onStartPressed,
                 ),
               ),
             ),
@@ -70,7 +75,7 @@ class _TitleText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    Widget content = Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -110,6 +115,46 @@ class _TitleText extends StatelessWidget {
               duration: .7.seconds,
             ),
       ],
+    );
+
+    return Consumer<FragmentPrograms?>(
+      builder: (context, fragmentPrograms, __) {
+        if (fragmentPrograms == null) {
+          return content;
+        }
+
+        return TickingBuilder(
+          builder: (_, time) {
+            return AnimatedSampler(
+              (
+                image,
+                size,
+                canvas,
+              ) {
+                const double overdrawPx = 30;
+
+                final shader = fragmentPrograms.ui.fragmentShader();
+
+                shader
+                  ..setFloat(0, size.width)
+                  ..setFloat(1, size.height)
+                  ..setFloat(2, time)
+                  ..setImageSampler(0, image);
+
+                Rect rect = Rect.fromLTWH(
+                  -overdrawPx,
+                  -overdrawPx,
+                  size.width + overdrawPx,
+                  size.height + overdrawPx,
+                );
+
+                canvas.drawRect(rect, Paint()..shader = shader);
+              },
+              child: content,
+            );
+          },
+        );
+      },
     );
   }
 }
@@ -208,9 +253,8 @@ class _DifficultyButton extends StatelessWidget {
             child: Stack(children: [
               /// Bg with fill and outline
               AnimatedOpacity(
-                opacity: (!selected && (state.isHovered || state.isFocused))
-                    ? 1
-                    : 0,
+                opacity:
+                    (!selected && (state.isHovered || state.isFocused)) ? 1 : 0,
                 duration: .3.seconds,
                 child: Container(
                   decoration: BoxDecoration(
@@ -324,9 +368,12 @@ class __StartButtonState extends State<_StartButton> {
                 duration: .7.seconds,
                 color: Colors.black,
               ),
-        ).animate().fadeIn(
+        )
+            .animate()
+            .fadeIn(
               delay: 2.3.seconds,
-            ).slide(
+            )
+            .slide(
               begin: const Offset(0, .2),
             );
       },
