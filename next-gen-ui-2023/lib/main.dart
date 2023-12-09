@@ -2,14 +2,17 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+// Dart packages first
 import 'dart:io' show Platform;
 
+// Then the Flutter packages
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import 'package:window_size/window_size.dart';
 
+// And finally the project files
 import 'utils/assets.dart';
 import 'views/title_screen.dart';
 

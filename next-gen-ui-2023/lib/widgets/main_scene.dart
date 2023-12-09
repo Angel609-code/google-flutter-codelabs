@@ -5,12 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-import '../utils/assets.dart';
-import '../utils/styles.dart';
 import '../orb_shader/orb_shader_config.dart';
 import '../orb_shader/orb_shader_widget.dart';
+import '../utils/assets.dart';
+import '../utils/styles.dart';
 import 'animated_colors.dart';
 import 'image_coloring.dart';
+import 'particle_overlay.dart';
 import 'title_screen_ui.dart';
 
 class MainScene extends StatefulWidget {
@@ -203,6 +204,16 @@ class _MainSceneState extends State<MainScene>
                 imgSrc: AssetPaths.titleMgEmit,
                 lightAmt: _finalEmitLightAmt,
                 pulseEffect: _pulseEffect,
+              ),
+
+              /// Particle Field
+              Positioned.fill(
+                child: IgnorePointer(
+                  child: ParticleOverlay(
+                    color: _orbColor,
+                    energy: _orbEnergy,
+                  ),
+                ),
               ),
 
               /// Fg-rocks

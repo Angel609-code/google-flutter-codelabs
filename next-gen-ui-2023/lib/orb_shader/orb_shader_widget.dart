@@ -10,8 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 
-import '../utils/assets.dart';
 import '../common/reactive_widget.dart';
+import '../utils/assets.dart';
 import 'orb_shader_config.dart';
 import 'orb_shader_painter.dart';
 
