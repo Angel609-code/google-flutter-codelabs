@@ -1,5 +1,6 @@
 import 'package:extra_alignments/extra_alignments.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:focusable_control_builder/focusable_control_builder.dart';
 import 'package:gap/gap.dart';
 
@@ -97,11 +98,17 @@ class _TitleText extends StatelessWidget {
               height: 65,
             ),
           ],
-        ),
+        ).animate().fadeIn(
+              delay: .8.seconds,
+              duration: .7.seconds,
+            ),
         Text(
           'INTO THE UNKNOWN',
           style: TextStyles.h3,
-        ),
+        ).animate().fadeIn(
+              delay: 1.seconds,
+              duration: .7.seconds,
+            ),
       ],
     );
   }
@@ -129,19 +136,43 @@ class _DifficultyButtons extends StatelessWidget {
           selected: difficulty == 0,
           onPressed: () => onDifficultyPressed(0),
           onHover: (over) => onDifficultyFocused(over ? 0 : null),
-        ),
+        )
+            .animate()
+            .fadeIn(
+              delay: 1.3.seconds,
+              duration: .35.seconds,
+            )
+            .slide(
+              begin: const Offset(0, .2),
+            ),
         _DifficultyButton(
           label: 'Normal',
           selected: difficulty == 1,
           onPressed: () => onDifficultyPressed(1),
           onHover: (over) => onDifficultyFocused(over ? 1 : null),
-        ),
+        )
+            .animate()
+            .fadeIn(
+              delay: 1.5.seconds,
+              duration: .35.seconds,
+            )
+            .slide(
+              begin: const Offset(0, .2),
+            ),
         _DifficultyButton(
           label: 'Hardcore',
           selected: difficulty == 2,
           onPressed: () => onDifficultyPressed(2),
           onHover: (over) => onDifficultyFocused(over ? 2 : null),
-        ),
+        )
+            .animate()
+            .fadeIn(
+              delay: 1.7.seconds,
+              duration: .25.seconds,
+            )
+            .slide(
+              begin: const Offset(0, .2),
+            ),
         const Gap(20),
       ],
     );
@@ -176,12 +207,18 @@ class _DifficultyButton extends StatelessWidget {
             height: 60,
             child: Stack(children: [
               /// Bg with fill and outline
-              Container(
-                decoration: BoxDecoration(
-                  color: const Color(0xFF00D1FF).withOpacity(.1),
-                  border: Border.all(
-                    color: Colors.white,
-                    width: 5,
+              AnimatedOpacity(
+                opacity: (!selected && (state.isHovered || state.isFocused))
+                    ? 1
+                    : 0,
+                duration: .3.seconds,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF00D1FF).withOpacity(.1),
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 5,
+                    ),
                   ),
                 ),
               ),
@@ -195,7 +232,7 @@ class _DifficultyButton extends StatelessWidget {
                 ),
               ],
 
-              /// If selected
+              /// Cross-hairs (Selected state)
               if (selected) ...[
                 CenterLeft(
                   child: Image.asset(AssetPaths.titleSelectedLeft),
@@ -271,16 +308,27 @@ class __StartButtonState extends State<_StartButton> {
                   children: [
                     Text(
                       'START MISSION',
-                      style: TextStyles.btn.copyWith(
-                        fontSize: 24, letterSpacing: 18
-                      ),
+                      style: TextStyles.btn
+                          .copyWith(fontSize: 24, letterSpacing: 18),
                     )
                   ],
                 ),
               ),
             ],
-          ),
-        );
+          )
+              .animate(
+                autoPlay: false,
+                onInit: (c) => _btnAnim = c,
+              )
+              .shimmer(
+                duration: .7.seconds,
+                color: Colors.black,
+              ),
+        ).animate().fadeIn(
+              delay: 2.3.seconds,
+            ).slide(
+              begin: const Offset(0, .2),
+            );
       },
     );
   }
