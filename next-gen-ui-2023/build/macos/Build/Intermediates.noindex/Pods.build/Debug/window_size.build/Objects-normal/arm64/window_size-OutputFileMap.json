@@ -1,0 +1,18 @@
+{
+  "" : {
+    "diagnostics" : "/Users/joseag/Documents/Study/Flutter/Courses/google-flutter-codelabs/next-gen-ui-2023/build/macos/Build/Intermediates.noindex/Pods.build/Debug/window_size.build/Objects-normal/arm64/window_size-master.dia",
+    "emit-module-dependencies" : "/Users/joseag/Documents/Study/Flutter/Courses/google-flutter-codelabs/next-gen-ui-2023/build/macos/Build/Intermediates.noindex/Pods.build/Debug/window_size.build/Objects-normal/arm64/window_size-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/joseag/Documents/Study/Flutter/Courses/google-flutter-codelabs/next-gen-ui-2023/build/macos/Build/Intermediates.noindex/Pods.build/Debug/window_size.build/Objects-normal/arm64/window_size-master-emit-module.dia",
+    "swift-dependencies" : "/Users/joseag/Documents/Study/Flutter/Courses/google-flutter-codelabs/next-gen-ui-2023/build/macos/Build/Intermediates.noindex/Pods.build/Debug/window_size.build/Objects-normal/arm64/window_size-master.swiftdeps"
+  },
+  "/Users/joseag/.pub-cache/git/flutter-desktop-embedding-6c66ad23ee79749f30a8eece542cf54eaf157ed8/plugins/window_size/macos/Classes/WindowSizePlugin.swift" : {
+    "const-values" : "/Users/joseag/Documents/Study/Flutter/Courses/google-flutter-codelabs/next-gen-ui-2023/build/macos/Build/Intermediates.noindex/Pods.build/Debug/window_size.build/Objects-normal/arm64/WindowSizePlugin.swiftconstvalues",
+    "dependencies" : "/Users/joseag/Documents/Study/Flutter/Courses/google-flutter-codelabs/next-gen-ui-2023/build/macos/Build/Intermediates.noindex/Pods.build/Debug/window_size.build/Objects-normal/arm64/WindowSizePlugin.d",
+    "diagnostics" : "/Users/joseag/Documents/Study/Flutter/Courses/google-flutter-codelabs/next-gen-ui-2023/build/macos/Build/Intermediates.noindex/Pods.build/Debug/window_size.build/Objects-normal/arm64/WindowSizePlugin.dia",
+    "index-unit-output-path" : "/Pods.build/Debug/window_size.build/Objects-normal/arm64/WindowSizePlugin.o",
+    "llvm-bc" : "/Users/joseag/Documents/Study/Flutter/Courses/google-flutter-codelabs/next-gen-ui-2023/build/macos/Build/Intermediates.noindex/Pods.build/Debug/window_size.build/Objects-normal/arm64/WindowSizePlugin.bc",
+    "object" : "/Users/joseag/Documents/Study/Flutter/Courses/google-flutter-codelabs/next-gen-ui-2023/build/macos/Build/Intermediates.noindex/Pods.build/Debug/window_size.build/Objects-normal/arm64/WindowSizePlugin.o",
+    "swift-dependencies" : "/Users/joseag/Documents/Study/Flutter/Courses/google-flutter-codelabs/next-gen-ui-2023/build/macos/Build/Intermediates.noindex/Pods.build/Debug/window_size.build/Objects-normal/arm64/WindowSizePlugin.swiftdeps",
+    "swiftmodule" : "/Users/joseag/Documents/Study/Flutter/Courses/google-flutter-codelabs/next-gen-ui-2023/build/macos/Build/Intermediates.noindex/Pods.build/Debug/window_size.build/Objects-normal/arm64/WindowSizePlugin~partial.swiftmodule"
+  }
+}
